@@ -1,0 +1,13 @@
+[
+  {
+    "employeeId": "EMP-001",
+    "name": "Mahisha V",
+    "email": "mahisha.v@cybercorp.org",
+    "department": "Software Engineering",
+    "role": "Lead Research Engineer (Active Workstation)",
+    "status": "Active",
+    "riskScore": 10,
+    "riskLevel": "Low",
+    "lastActivity": "2026-09-09T04:45:00.000Z"
+  }
+]

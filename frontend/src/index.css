@@ -1,0 +1,350 @@
+/* =====================================================================
+   index.css — Executive Threat Intelligence Design System
+   Bright / Light Executive Theme (Inspired by Stripe, SentinelOne, Datadog)
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ── Design Tokens: Bright Executive Edition ───────────────────────── */
+:root {
+  /* Surface Hierarchy — Crisp Porcelain & Polished Slate */
+  --bg-root:             #f8fafc;   /* Canvas background */
+  --bg-sidebar:          #ffffff;   /* Elevated Sidebar */
+  --bg-surface:          #ffffff;   /* Clean Cards & Panels */
+  --bg-surface-elevated: #ffffff;   /* Modals, Dropdowns */
+  --bg-input:            #f8fafc;   /* Input backgrounds */
+  --bg-hover:            #f1f5f9;   /* Row & Item Hover */
+
+  /* Borders & Dividers */
+  --border-subtle:  #e2e8f0;   /* Light card & table borders */
+  --border-default: #cbd5e1;   /* Input & card borders */
+  --border-strong:  #94a3b8;   /* Interactive borders */
+  --border-focus:   #2563eb;   /* Vibrant focus ring */
+
+  /* Typography — Deep Charcoal & Slate */
+  --text-primary:   #0f172a;   /* Slate 900 — Headings, high emphasis */
+  --text-secondary: #334155;   /* Slate 700 — Body text, labels */
+  --text-muted:     #64748b;   /* Slate 500 — Secondary captions */
+  --text-disabled:  #94a3b8;   /* Slate 400 — Inactive */
+  --text-inverse:   #ffffff;   /* Pure white for dark badges/buttons */
+
+  /* Brand / Primary — Executive Royal Blue */
+  --brand-primary:       #2563eb;   /* Royal Blue */
+  --brand-primary-hover: #1d4ed8;   /* Deep Blue */
+  --brand-primary-dim:   #eff6ff;   /* Soft Blue tint */
+  --brand-accent:        #0284c7;   /* Sky Blue */
+
+  /* Strict Semantic Risk Palette (Rich, Accessible Contrast) */
+  --risk-low-text:        #15803d;  /* Green 700 */
+  --risk-low-bg:          #f0fdf4;  /* Green 50 */
+  --risk-low-border:      #bbf7d0;  /* Green 200 */
+
+  --risk-medium-text:     #b45309;  /* Amber 700 */
+  --risk-medium-bg:       #fffbeb;  /* Amber 50 */
+  --risk-medium-border:   #fde68a;  /* Amber 200 */
+
+  --risk-high-text:       #c2410c;  /* Orange 700 */
+  --risk-high-bg:         #fff7ed;  /* Orange 50 */
+  --risk-high-border:     #fed7aa;  /* Orange 200 */
+
+  --risk-critical-text:   #b91c1c;  /* Red 700 */
+  --risk-critical-bg:     #fef2f2;  /* Red 50 */
+  --risk-critical-border: #fecaca;  /* Red 200 */
+
+  /* System Status Indicators */
+  --status-online:  #16a34a;
+  --status-warning: #d97706;
+  --status-offline: #dc2626;
+
+  /* Typography Stacks */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Shadows — Soft Enterprise Depth */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ── Base Reset & Typography ────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-root);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-root); }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Surface Cards ─────────────────────────────────────────────────── */
+.soc-card,
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.soc-card:hover,
+.glass-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Typography Helpers ─────────────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.mono-font, code, pre {
+  font-family: var(--font-mono);
+}
+
+/* ── Standard Buttons ───────────────────────────────────────────────── */
+.btn-primary,
+.glow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 9px 18px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover,
+.glow-btn:hover {
+  background: var(--brand-primary-hover);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active,
+.glow-btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled,
+.glow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+/* ── Risk Badges (Executive Pill Style) ─────────────────────────────── */
+.badge-low, .badge-medium, .badge-high, .badge-critical {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.badge-low      { background: var(--risk-low-bg);      color: var(--risk-low-text);      border: 1px solid var(--risk-low-border); }
+.badge-medium   { background: var(--risk-medium-bg);   color: var(--risk-medium-text);   border: 1px solid var(--risk-medium-border); }
+.badge-high     { background: var(--risk-high-bg);     color: var(--risk-high-text);     border: 1px solid var(--risk-high-border); }
+.badge-critical { background: var(--risk-critical-bg); color: var(--risk-critical-text); border: 1px solid var(--risk-critical-border); }
+
+/* ── Status Indicators ──────────────────────────────────────────────── */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-dot-active   { background: var(--status-online);  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18); }
+.status-dot-warning  { background: var(--status-warning); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.18); }
+.status-dot-critical { background: var(--status-offline); box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18); }
+
+/* ── Form Inputs ────────────────────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-default) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 13.5px !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-xs) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+  outline: none !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────── */
+.table-container,
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  background-color: #f8fafc;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* ── Information & Advisory Callouts ─────────────────────────────────── */
+.notice-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+.notice-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
